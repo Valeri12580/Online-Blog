@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Blog extends BasePublishEntity {
+public class Article extends BasePublishEntity {
 
     @Column
     private LocalDateTime publishedOn;

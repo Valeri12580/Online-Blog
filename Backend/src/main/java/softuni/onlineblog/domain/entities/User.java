@@ -20,6 +20,8 @@ public class User extends BaseEntity {
     @NotNull
     private String username;
 
+
+
     @Column
     @NotNull
     private String email;
@@ -44,7 +46,7 @@ public class User extends BaseEntity {
     private Set<Role> roles;
 
     @OneToMany
-    private List<Blog> publishedBlogs;
+    private List<Article> publishedArticles;
 
 
     @OneToMany(mappedBy = "author")

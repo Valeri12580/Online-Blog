@@ -1,3 +1,7 @@
+.container > .navbar-brand{
+  font-size: 25px;
+}
+
 .navigation-clean-button {
   background: #fff;
   padding-top: .75rem;
