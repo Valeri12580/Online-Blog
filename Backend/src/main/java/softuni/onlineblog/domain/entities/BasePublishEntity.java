@@ -34,9 +34,9 @@ public class BasePublishEntity  extends BaseEntity{
     @Column
     private String imageUrl;
 
-    @OneToMany(mappedBy = "publishedIn")
-    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
+    @OneToMany(mappedBy = "publishedIn",cascade = CascadeType.PERSIST)
     private List<Comment> comments;
+
 
     @Enumerated(EnumType.STRING)
     @Column

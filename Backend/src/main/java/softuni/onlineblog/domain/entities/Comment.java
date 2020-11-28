@@ -1,14 +1,17 @@
 package softuni.onlineblog.domain.entities;
 
 import com.sun.istack.NotNull;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Table
 @Entity
-
+@Getter
+@Setter
 @NoArgsConstructor
 public class Comment extends BaseEntity {
 

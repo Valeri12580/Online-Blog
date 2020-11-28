@@ -9,6 +9,7 @@ import {AuthenticationModule} from './authentication/authentication.module';
 import {AppRoutingModule} from './app-routing.module';
 import {ArticleModule} from './article/article.module';
 import {ShopModule} from './shop/shop.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import {ShopModule} from './shop/shop.module';
     BrowserModule,
     CoreModule,
     AuthenticationModule, ArticleModule,
-    ShopModule, AppRoutingModule]
+    ShopModule
+    ,  HttpClientModule
+    , AppRoutingModule]
   ,
   providers: [],
   bootstrap: [AppComponent]

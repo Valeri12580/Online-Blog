@@ -22,8 +22,6 @@ public class ArticleInitialization implements CommandLineRunner {
     private UserRepository userRepository;
     private ArticleRepository articleRepository;
 
-    private User admin = null;
-    private User user = null;
 
     @Autowired
     public ArticleInitialization(UserRepository userRepository, ArticleRepository articleRepository) {
@@ -39,36 +37,25 @@ public class ArticleInitialization implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.admin = this.userRepository.findUserByUsername("valeri");
-        this.user = this.userRepository.findUserByUsername("ivan");
+
+        User admin = this.userRepository.findUserByUsername("valeri");
+        User user = this.userRepository.findUserByUsername("ivan");
+
+
+
+
         Article articleOne = new Article("Our website is launched!",
                 "Welcome to our website.Here you can find various of articles and products that will help you upgrade yourself!",
-                admin, "https://cdn.pixabay.com/photo/2014/11/17/13/17/crossfit-534615_1280.jpg", generateComments(1), PublishedIn.BLOG, LocalDateTime.now());
+                admin, "https://cdn.pixabay.com/photo/2014/11/17/13/17/crossfit-534615_1280.jpg",null, PublishedIn.BLOG, LocalDateTime.now());
         Article articleTwo = new Article("How to build more muscles!",
                 "You want to get stronger and build more muscles?Well to do that you need to TRAIN HARD!",
-                admin, "https://cdn.pixabay.com/photo/2017/02/04/12/25/man-2037255_1280.jpg", generateComments(2), PublishedIn.BLOG, LocalDateTime.now());
+                admin, "https://cdn.pixabay.com/photo/2017/02/04/12/25/man-2037255_1280.jpg", null, PublishedIn.BLOG, LocalDateTime.now());
+
 
         //todo published_in_id --> null
         articleRepository.saveAll(List.of(articleOne, articleTwo));
     }
 
 
-    private List<Comment> generateComments(int numComments) {
 
-        List<Comment> comments = new ArrayList<>();
-
-        for (int i = 0; i < numComments; i++) {
-            Comment comment = new Comment("Wow amazing article!!!", admin, LocalDateTime.now());
-            Comment commentTwo = new Comment("The article is very good!Im very exited about your next one...", user,
-                    LocalDateTime.now());
-
-            if (i % 2 == 0) {
-                comments.add(comment);
-            } else {
-                comments.add(commentTwo);
-            }
-
-        }
-        return comments;
-    }
 }
