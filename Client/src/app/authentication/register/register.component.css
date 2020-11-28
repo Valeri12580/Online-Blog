@@ -1,8 +1,10 @@
-main{
-  background-image: url("../../assets/img/running.jpg");
+main {
+  background-image: url("../../../assets/img/woman-register.jpg");
   background-size: cover;
 
 }
+
+
 
 .form-outer .wrapper .form-wrapper{
   width: 30%;

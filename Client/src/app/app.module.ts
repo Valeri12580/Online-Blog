@@ -2,55 +2,33 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {NavigationComponent} from './navigation/navigation.component';
-import {FooterComponent} from './footer/footer.component';
+import {NavigationComponent} from './core/navigation/navigation.component';
+import {FooterComponent} from './core/footer/footer.component';
 import {HomeUnauthenticatedComponent} from './home-unauthenticated/home-unauthenticated.component';
-import {RegisterComponent} from './register/register.component';
-import {LoginComponent} from './login/login.component';
-import {ArticlesListComponent} from './articles-list/articles-list.component';
-import {ArticleComponent} from './article/article.component';
+import {RegisterComponent} from './authentication/register/register.component';
+import {LoginComponent} from './authentication/login/login.component';
+import {ArticlesListComponent} from './article/articles-list/articles-list.component';
+import {ArticleDetailsComponent} from './article/article-details/article-details.component';
 import {RouterModule} from '@angular/router';
 import {AboutComponent} from './about/about.component';
 import {ShopComponent} from './shop/shop.component';
+import {CoreModule} from './core/core.module';
+import {AuthenticationModule} from './authentication/authentication.module';
+import {AppRoutingModule} from './app-routing.module';
+import {ArticleModule} from './article/article.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    FooterComponent,
     HomeUnauthenticatedComponent,
-    RegisterComponent,
-    LoginComponent,
-    ArticlesListComponent,
-    ArticleComponent,
     AboutComponent,
     ShopComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: HomeUnauthenticatedComponent
-      },
-      {
-        path: 'articles',
-        component: ArticlesListComponent
-      },
-      {
-        path: 'users/register',
-        component: RegisterComponent
-      }, {path: 'users/login', component: LoginComponent},
-      {
-        path: 'about',
-        component: AboutComponent
-      },
-      {
-        path: 'shop',
-        component: ShopComponent
-      }
-    ])
-  ],
+    CoreModule,
+    AuthenticationModule, ArticleModule, AppRoutingModule]
+  ,
   providers: [],
   bootstrap: [AppComponent]
 })
