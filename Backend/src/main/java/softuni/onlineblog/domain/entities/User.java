@@ -1,6 +1,7 @@
 package softuni.onlineblog.domain.entities;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,10 +16,15 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class User extends BaseEntity {
     @Column
     @NotNull
     private String username;
+
+    @Column
+    @NotNull
+    private String password;
 
 
 
@@ -42,7 +48,10 @@ public class User extends BaseEntity {
     private List<Product> purchaseHistory;
 
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = "users_roles"
+    ,joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
     private Set<Role> roles;
 
     @OneToMany

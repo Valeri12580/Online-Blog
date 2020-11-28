@@ -1,9 +1,11 @@
 package softuni.onlineblog.domain.entities;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class BasePublishEntity  extends BaseEntity{
@@ -32,6 +35,7 @@ public class BasePublishEntity  extends BaseEntity{
     private String imageUrl;
 
     @OneToMany(mappedBy = "publishedIn")
+    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
     private List<Comment> comments;
 
     @Enumerated(EnumType.STRING)
