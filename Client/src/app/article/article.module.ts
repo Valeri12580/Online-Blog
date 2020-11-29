@@ -4,7 +4,6 @@ import {ArticleDetailsComponent} from './article-details/article-details.compone
 import {ArticlesListComponent} from './articles-list/articles-list.component';
 import {ArticleRoutingModule} from './article-routing.module';
 import {ArticleService} from './article.service';
-import {HttpClientModule} from '@angular/common/http';
 import { ArticleComponent } from './article/article.component';
 
 

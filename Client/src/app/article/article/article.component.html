@@ -1,17 +1,16 @@
 <div>
-  <a href="#"><img class="img-fluid" src="img/desk.jpg"/></a>
-  <h3 class="name">Article Title</h3>
+  <a routerLink="{{article.id}}}">
+    <img class="img-fluid" style="height: 220px" src="{{article.imageUrl}}"/></a>
+  <h3 class="name">{{article.title}}</h3>
   <p class="description">
-    Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
-    Praesent aliquam in tellus eu gravida. Aliquam varius finibus est,
-    interdum justo suscipit id.
+   {{article.description.substr(0,30)}}
   </p>
   <hr class="article-separator"/>
   <div class="article-additional-data">
-    <span>username</span>
-    <span>date</span>
+    <span>{{article.authorUsername}}</span>
+    <span>{{article.publishedOn}}</span>
   </div>
-  <a class="action" routerLink="54rds"
+  <a class="action" routerLink="{{article.id}}"
   ><i class="fa fa-arrow-circle-right"></i
   ></a>
 </div>

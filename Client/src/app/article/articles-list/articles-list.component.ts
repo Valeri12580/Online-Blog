@@ -1,4 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ArticleService} from '../article.service';
+import {IArticle} from '../IArticle';
 
 @Component({
   selector: 'app-articles-list',
@@ -7,11 +9,15 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ArticlesListComponent implements OnInit {
+  public articles: IArticle[];
+  public articleService: ArticleService;
 
-  constructor() {
+  constructor(articleService: ArticleService) {
+    this.articleService = articleService;
   }
 
   ngOnInit(): void {
+    this.articleService.findAllArticles().subscribe(e => this.articles = e);
   }
 
 }

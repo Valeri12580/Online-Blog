@@ -1,5 +1,6 @@
 package softuni.onlineblog.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,7 +28,6 @@ public class User extends BaseEntity {
     private String password;
 
 
-
     @Column
     @NotNull
     private String email;
@@ -50,15 +50,18 @@ public class User extends BaseEntity {
 
     @ManyToMany
     @JoinTable(name = "users_roles"
-    ,joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
+            , joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;
 
-    @OneToMany
+
+    @OneToMany(mappedBy = "author")
+    @JsonBackReference
     private List<Article> publishedArticles;
 
 
     @OneToMany(mappedBy = "author")
+    @JsonBackReference
     private List<Comment> comments;
 
 

@@ -39,7 +39,7 @@ public class ArticleInitialization implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         User admin = this.userRepository.findUserByUsername("valeri");
-        User user = this.userRepository.findUserByUsername("ivan");
+
 
 
 

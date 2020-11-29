@@ -7,9 +7,7 @@
       </div>
 
       <div class="row articles">
-        <app-article class="col-sm-6 col-md-4 item"></app-article>
-        <app-article class="col-sm-6 col-md-4 item"></app-article>
-        <app-article class="col-sm-6 col-md-4 item"></app-article>
+        <app-article *ngFor="let article of articles" [article]="article" class="col-sm-6 col-md-4 item"></app-article>
 
 
       </div>
