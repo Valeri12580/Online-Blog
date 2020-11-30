@@ -13,7 +13,7 @@ public class CommentViewModel  extends BaseViewModel{
 
     private String description;
 
-    private String authorUsername;
+    private UserViewModel author;
 
     private LocalDateTime publishedOn;
 }

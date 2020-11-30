@@ -15,6 +15,14 @@ export class ArticleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.article.publishedOn = this.formatDate(this.article.publishedOn);
+  }
+
+  formatDate(date: string): string {
+    let result = '';
+    const dateObj: Date = new Date(date);
+    result = `${dateObj.getHours()}:${dateObj.getMinutes()}  ${dateObj.getDate()}/${dateObj.getMonth()}/${dateObj.getFullYear()}`;
+    return result;
   }
 
 }

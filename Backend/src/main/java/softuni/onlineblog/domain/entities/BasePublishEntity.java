@@ -21,7 +21,7 @@ public class BasePublishEntity  extends BaseEntity{
     @Column
     @NotNull
     private String title;
-    @Column
+    @Column(columnDefinition = "TEXT")
     @NotNull
     private String description;
 

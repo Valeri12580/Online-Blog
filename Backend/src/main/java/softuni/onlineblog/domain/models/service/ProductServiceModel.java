@@ -1,6 +1,5 @@
-package softuni.onlineblog.domain.models.view;
+package softuni.onlineblog.domain.models.service;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,27 +7,20 @@ import softuni.onlineblog.domain.entities.Comment;
 import softuni.onlineblog.domain.entities.PublishedIn;
 import softuni.onlineblog.domain.entities.User;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class ArticleViewModel extends BaseViewModel {
-
-
+public class ProductServiceModel extends BaseServiceModel  {
     private String title;
-
     private String description;
-
-
-    private UserViewModel author;
-
-
+    private User author;
     private String imageUrl;
-
-    private List<CommentViewModel> comments;
-
-    private LocalDateTime publishedOn;
+    private List<Comment>comments;
     private PublishedIn publishedIn;
+    private int quantity;
+    private BigDecimal price;
+
 }

@@ -38,7 +38,7 @@ public class ArticleInitialization implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        User admin = this.userRepository.findUserByUsername("valeri");
+        User admin = this.userRepository.findUserByUsername("valeri").get();
 
 
 
