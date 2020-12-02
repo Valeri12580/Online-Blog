@@ -24,13 +24,13 @@ public class ArticleServiceModel extends BaseServiceModel {
     private String description;
 
 
-    private User author;
+    private UserServiceModel author;
 
 
     private String imageUrl;
 
 
-    private List<Comment>comments;
+    private List<CommentServiceModel>comments;
     private LocalDateTime publishedOn;
     private PublishedIn publishedIn;
 }
