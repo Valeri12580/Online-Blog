@@ -3,7 +3,7 @@ import {AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator, 
 
 
 export const equalPasswordValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
-  console.log(control);
+
   const password = control.get('password');
   const rePassword = control.get('rePassword');
   if (password === null || rePassword === null) {

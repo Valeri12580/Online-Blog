@@ -20,9 +20,10 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     CoreModule,
-    AuthenticationModule, ArticleModule,
+    AuthenticationModule,
+    ArticleModule,
     ShopModule
-    ,  HttpClientModule
+    , HttpClientModule
     , AppRoutingModule]
   ,
   providers: [],
