@@ -3,15 +3,18 @@ package softuni.onlineblog.web.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import softuni.onlineblog.domain.models.binding.UserRegisterBindingModel;
+import softuni.onlineblog.domain.models.service.UserServiceModel;
 import softuni.onlineblog.domain.models.view.UserViewModel;
 import softuni.onlineblog.exceptions.UserNotFoundException;
 import softuni.onlineblog.services.UserService;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,6 +55,23 @@ public class UserController {
         map.put("email", userViewModelByEmail == null );
         map.put("username", userViewModelByUsername == null );
         return ResponseEntity.ok().body(map);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<Void>register(@RequestBody UserRegisterBindingModel userRegisterBindingModel) throws URISyntaxException {
+
+        UserServiceModel userServiceModel=this.modelMapper.map(userRegisterBindingModel,UserServiceModel.class);
+
+        this.userService.registerUser(userServiceModel);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/authenticated")
+    public Principal authenticate(Principal user){
+
+
+        return null;
     }
 
 

@@ -28,9 +28,8 @@ export class UserAvailabilityDirective implements Validator {
       this.result = response;
     });
 
-    let boolResult: boolean = this.result.email && this.result.username;
-    let resultToReturn = boolResult ? null : {usernameNotFree: !this.result.username, emailNotFree: !this.result.email};
-    return resultToReturn;
+    const boolResult: boolean = this.result.email && this.result.username;
+    return boolResult ? null : {usernameNotFree: !this.result.username, emailNotFree: !this.result.email};
   };
 
   validate(control: AbstractControl): ValidationErrors | null {
