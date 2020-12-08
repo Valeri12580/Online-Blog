@@ -27,14 +27,15 @@
 
 
     <span class="navbar-text actions">
-
+              <div *ngIf="!authenticationService.isAuthenticated">
                 <a class="login" routerLink="users/login">Log In</a>
                 <a class="btn btn-warning " role="button" routerLink="users/register">Register</a>
+              </div>
 
 
-      <!--<form th:method="post" action="#">
-          <button class="btn btn-light action-button" role="button" type="submit">Logout</button>
-      </form> -->
+
+          <a (click)="logout()" *ngIf="authenticationService.isAuthenticated" class="btn btn-light action-button" role="button">Logout</a>
+
 
             </span>
   </div>

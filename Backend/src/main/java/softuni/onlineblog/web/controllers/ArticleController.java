@@ -3,6 +3,7 @@ package softuni.onlineblog.web.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class ArticleController {
     @GetMapping
     public ResponseEntity<List<ArticleViewModel>> findAllArticles() {
         List<ArticleViewModel> result = List.of(this.modelMapper.map(this.articleService.findAllArticles(), ArticleViewModel[].class));
+        System.out.println(SecurityContextHolder.getContext().getAuthentication());
         return ResponseEntity.ok(result);
     }
 

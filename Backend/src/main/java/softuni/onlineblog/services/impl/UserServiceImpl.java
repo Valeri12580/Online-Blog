@@ -2,6 +2,9 @@ package softuni.onlineblog.services.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import softuni.onlineblog.domain.entities.User;
@@ -15,7 +18,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Service
-public class UserServiceImpl  implements UserService {
+public class UserServiceImpl  implements UserService  {
     private UserRepository userRepository;
     private ModelMapper modelMapper;
     private RoleService roleService;
@@ -56,4 +59,6 @@ public class UserServiceImpl  implements UserService {
         user=this.userRepository.save(user);
         return this.modelMapper.map(user,UserServiceModel.class);
     }
+
+
 }

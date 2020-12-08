@@ -7,7 +7,8 @@ import {AboutComponent} from './about/about.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeUnauthenticatedComponent
+    component: HomeUnauthenticatedComponent,
+    pathMatch: 'full'
   },
   {
     path: 'about',

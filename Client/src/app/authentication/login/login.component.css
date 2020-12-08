@@ -32,3 +32,8 @@ main{
   font-size: 14px;
   word-spacing: 1px;
 }
+
+.alert-danger{
+  padding: 5px;
+  font-size: 14px;
+}
