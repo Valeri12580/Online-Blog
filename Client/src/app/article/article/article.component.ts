@@ -25,4 +25,7 @@ export class ArticleComponent implements OnInit {
     return result;
   }
 
+  deleteArticle(id: string) {
+    
+  }
 }

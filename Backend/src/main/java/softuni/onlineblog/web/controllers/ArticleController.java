@@ -4,10 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import softuni.onlineblog.domain.models.view.ArticleViewModel;
 import softuni.onlineblog.exceptions.ArticleNotFoundException;
 import softuni.onlineblog.services.ArticleService;
@@ -41,6 +38,12 @@ public class ArticleController {
         ArticleViewModel article = this.modelMapper.map(this.articleService.findArticleById(id), ArticleViewModel.class);
 
         return ResponseEntity.ok(article);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void>deleteArticleById(@PathVariable String id ){
+        System.out.println();
+        return ResponseEntity.ok().build();
     }
 
 
