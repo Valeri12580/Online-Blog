@@ -38,7 +38,7 @@ public class CommentInitialization  implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         User admin = this.userRepository.findUserByUsername("valeri").get();
-        User user = this.userRepository.findUserByUsername("ivan12").get();
+        User user = this.userRepository.findUserByUsername("ivan").get();
         initArticleComments(admin,user);
         initShopComments(user);
     }

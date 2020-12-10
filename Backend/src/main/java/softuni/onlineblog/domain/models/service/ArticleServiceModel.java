@@ -1,14 +1,10 @@
 package softuni.onlineblog.domain.models.service;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import softuni.onlineblog.domain.entities.Comment;
+import softuni.onlineblog.domain.entities.BasePublishEntity;
 import softuni.onlineblog.domain.entities.PublishedIn;
-import softuni.onlineblog.domain.entities.User;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 
 public class ArticleServiceModel extends BaseServiceModel {
-
+    private String id;
     private String title;
     private String description;
 
@@ -30,7 +26,7 @@ public class ArticleServiceModel extends BaseServiceModel {
     private String imageUrl;
 
 
-    private List<CommentServiceModel>comments;
+    private List<CommentServiceModel> comments;
     private LocalDateTime publishedOn;
     private PublishedIn publishedIn;
 }

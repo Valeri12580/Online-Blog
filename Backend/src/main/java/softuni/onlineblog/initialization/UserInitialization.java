@@ -33,7 +33,7 @@ public class UserInitialization implements CommandLineRunner {
         Role roleAdmin = this.roleRepository.findByRole("ADMIN");
         Role roleUser = this.roleRepository.findByRole("USER");
         //todo encode passwords
-        User user = new User("ivan12", encoder.encode("ivan12345"), "ivan@abv.bg", "https://static.toiimg.com/photo/72975551.cmsxqFwoTCOCsqumrpe0CFQAAAAAdAAAAABAD",
+        User user = new User("ivan", encoder.encode("ivan12345"), "ivan@abv.bg", "https://static.toiimg.com/photo/72975551.cmsxqFwoTCOCsqumrpe0CFQAAAAAdAAAAABAD",
                 LocalDateTime.now(), null, Set.of(roleUser), null, null, null);
 
         User admin = new User("valeri", encoder.encode("valeri12345"), "valeri@abv.bg", "https://i.ytimg.com/vi/WhIrvsbEJ6Q/maxresdefault.jpg",

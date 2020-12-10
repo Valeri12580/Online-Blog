@@ -13,7 +13,7 @@
   <a class="action" routerLink="{{article.id}}"
   ><i class="fa fa-arrow-circle-right"></i
   ></a>
-  <a class="btn btn-primary rounded-pill w-25 " type="button"
+  <a *ngIf="authenticationService.isAdmin" class="btn btn-primary rounded-pill w-25 " type="button"
      style="margin-top: 20px;margin-bottom: 0px;margin-right: 0px;margin-left: 0px;"
      (click)="deleteArticle(article.id)">Delete
   </a>

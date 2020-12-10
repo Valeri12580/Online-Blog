@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IArticle} from '../IArticle';
+import {ArticleService} from '../article.service';
+import {AuthenticationService} from '../../core/services/authentication.service';
 
 @Component({
   selector: 'app-article',
@@ -10,7 +12,7 @@ export class ArticleComponent implements OnInit {
   @Input()
   public article: IArticle;
 
-  constructor() {
+  constructor(private articleService: ArticleService, public authenticationService: AuthenticationService) {
 
   }
 
@@ -26,6 +28,6 @@ export class ArticleComponent implements OnInit {
   }
 
   deleteArticle(id: string) {
-    
+    this.articleService.deleteArticleById(id);
   }
 }

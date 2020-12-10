@@ -11,9 +11,12 @@ export class AuthenticationService {
   public static LOGIN_ENDPOINT = '/users/login';
   public static LOGOUT_ENDPOINT = '/users/logout';
   isAuthenticated = sessionStorage.getItem('token') !== null;
+  isAdmin = null;
+  username = null;
 
 
   constructor(private httpClient: HttpClient) {
+
   }
 
   login(credentials, callback): void {
@@ -25,6 +28,8 @@ export class AuthenticationService {
           sessionStorage.setItem('token', token.toString());
           this.decodeToken(token);
           this.isAuthenticated = true;
+          this.isAdmin = sessionStorage.getItem('roles').includes('ADMIN');
+          this.username = sessionStorage.getItem('username');
           callback();
 
 
@@ -48,6 +53,8 @@ export class AuthenticationService {
     this.httpClient.post(`${Constants.SERVER_API + AuthenticationService.LOGOUT_ENDPOINT}`, 'logout')
       .subscribe(response => {
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('username');
+        sessionStorage.removeItem('roles');
         this.isAuthenticated = false;
       });
 

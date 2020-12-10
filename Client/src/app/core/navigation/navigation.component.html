@@ -15,15 +15,15 @@
             </span>
 
 
-    <!--<div class="dropdown  border rounded" style="margin-right: 30px;">
-        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="#">
-        </a>
-        <div class="dropdown-menu" role="menu">
-            <a class="dropdown-item" role="presentation" href="">Profile</a>
-            <a class="dropdown-item" role="presentation">Admin Panel</a>
-        </div>
+    <div class="dropdown  border rounded" style="margin-right: 30px;" *ngIf="authenticationService.isAuthenticated">
+      <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="#">{{authenticationService.username}}
+      </a>
+      <div class="dropdown-menu" role="menu">
+        <a class="dropdown-item" role="presentation" routerLink="/users/profile/{{authenticationService.username}}">Profile</a>
+        <a *ngIf="authenticationService.isAdmin" routerLink="/admin" class="dropdown-item" role="presentation">Admin Panel</a>
+      </div>
 
-    </div> -->
+    </div>
 
 
     <span class="navbar-text actions">
@@ -34,7 +34,8 @@
 
 
 
-          <a (click)="logout()" *ngIf="authenticationService.isAuthenticated" class="btn btn-light action-button" role="button">Logout</a>
+          <a (click)="logout()" *ngIf="authenticationService.isAuthenticated" class="btn btn-light action-button"
+             role="button">Logout</a>
 
 
             </span>

@@ -10,4 +10,8 @@ public interface ArticleService {
     List<ArticleServiceModel>findAllArticles();
 
     ArticleServiceModel findArticleById(String id) throws ArticleNotFoundException;
+
+    void deleteArticleById(String id) throws ArticleNotFoundException;
+
+
 }

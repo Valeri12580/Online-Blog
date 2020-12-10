@@ -34,7 +34,7 @@ public class BasePublishEntity  extends BaseEntity{
     @Column
     private String imageUrl;
 
-    @OneToMany(mappedBy = "publishedIn",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "publishedIn",cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Comment> comments;
 
 

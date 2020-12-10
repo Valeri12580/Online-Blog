@@ -3,8 +3,8 @@ package softuni.onlineblog.services.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import softuni.onlineblog.domain.entities.Article;
 import softuni.onlineblog.domain.models.service.ArticleServiceModel;
-import softuni.onlineblog.domain.models.view.ArticleViewModel;
 import softuni.onlineblog.exceptions.ArticleNotFoundException;
 import softuni.onlineblog.repositories.ArticleRepository;
 import softuni.onlineblog.services.ArticleService;
@@ -32,5 +32,12 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public ArticleServiceModel findArticleById(String id) throws ArticleNotFoundException {
         return this.modelMapper.map(this.articleRepository.findById(id).orElseThrow(()->new ArticleNotFoundException("Article not found!")), ArticleServiceModel.class);
+    }
+
+    @Override
+    public void deleteArticleById(String id) throws ArticleNotFoundException {
+        Article article = articleRepository.findById(id).orElseThrow(() -> new ArticleNotFoundException("Article not found!"));
+        articleRepository.delete(article);
+
     }
 }

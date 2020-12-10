@@ -22,6 +22,13 @@ public class Comment extends BaseEntity {
         this.publishedOn = publishedOn;
     }
 
+    public Comment(String description, User author, LocalDateTime publishedOn, BasePublishEntity publishedIn) {
+        this.description = description;
+        this.author = author;
+        this.publishedOn = publishedOn;
+        this.publishedIn = publishedIn;
+    }
+
     @Column
     @NotNull
     private String description;
