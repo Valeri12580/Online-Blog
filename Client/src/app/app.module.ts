@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {CoreModule} from './core/core.module';
-import {AuthenticationModule} from './authentication/authentication.module';
+import {AuthenticationModule} from './user/authentication.module';
 import {AppRoutingModule} from './app-routing.module';
 import {ArticleModule} from './article/article.module';
 import {ShopModule} from './shop/shop.module';
