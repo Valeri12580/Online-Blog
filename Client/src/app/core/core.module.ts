@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NavigationComponent} from './navigation/navigation.component';
 import {FooterComponent} from './footer/footer.component';
 import {RouterModule} from '@angular/router';
+import {UserService} from './services/user.service';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import {RouterModule} from '@angular/router';
     CommonModule,
     RouterModule
   ],
+  providers:[UserService],
   exports: [NavigationComponent, FooterComponent]
 })
 export class CoreModule {

@@ -17,5 +17,5 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
         FormsModule
     ]
 })
-export class AuthenticationModule {
+export class UserModule {
 }

@@ -5,13 +5,14 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {CoreModule} from './core/core.module';
-import {AuthenticationModule} from './user/authentication.module';
+import {UserModule} from './user/user.module';
 import {AppRoutingModule} from './app-routing.module';
 import {ArticleModule} from './article/article.module';
 import {ShopModule} from './shop/shop.module';
 import {HttpClientModule} from '@angular/common/http';
 import { jwtInterceptorProvider} from './core/interceptors/jwt.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {AdminModule} from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
   imports: [
     BrowserModule,
     CoreModule,
-    AuthenticationModule,
+    UserModule,
     ArticleModule,
-    ShopModule
+    ShopModule,
+    AdminModule
     , HttpClientModule
     , AppRoutingModule]
   ,

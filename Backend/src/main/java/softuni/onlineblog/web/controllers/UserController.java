@@ -103,5 +103,11 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/profile/{username}")
+    public ResponseEntity<UserViewModel>findUserByUsername(@PathVariable String username) throws UserNotFoundException {
+        UserViewModel user = this.modelMapper.map(userService.findUserByUsername(username), UserViewModel.class);
+        return ResponseEntity.ok(user);
+    }
+
 
 }
