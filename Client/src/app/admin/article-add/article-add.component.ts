@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {IAddArticle} from './IAddArticle';
+import {ArticleService} from '../../article/article.service';
+import {NgForm} from '@angular/forms';
+import {AdminService} from '../admin.service';
 
 @Component({
   selector: 'app-article-add',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-add.component.css']
 })
 export class ArticleAddComponent implements OnInit {
+  public article = new IAddArticle();
 
-  constructor() { }
+  constructor(public adminService: AdminService) {
+  }
 
   ngOnInit(): void {
+  }
+
+  publishArticle(form: NgForm) {
+    this.adminService.postArticle(this.article);
   }
 
 }

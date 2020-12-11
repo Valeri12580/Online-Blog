@@ -1,16 +1,16 @@
 <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
   <div class="container">
-    <a class="navbar-brand" href="#">Fitness blog</a>
+    <a class=" mb-2 navbar-brand" href="#">Fitness blog</a>
     <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
                     navigation</span><span class="navbar-toggler-icon"></span></button>
     <span class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" routerLink="">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" routerLink="articles">Articles</a>
+                <ul class="ml-3 mb-1 nav nav-tabs card-header-tabs mr-auto">
+                    <li role="presentation"><a class="nav-link nav-item" routerLink="">Home</a></li>
+                    <li role="presentation"><a class="nav-link nav-item" routerLink="articles">Articles</a>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" routerLink="shop">Shop</a></li>
+                    <li role="presentation"><a class="nav-link nav-item" routerLink="shop">Shop</a></li>
 
-                    <li class="nav-item" role="presentation"><a class="nav-link" routerLink="about">About Us</a></li>
+                    <li role="presentation"><a class="nav-link nav-item" routerLink="about">About Us</a></li>
                 </ul>
             </span>
 
@@ -20,7 +20,8 @@
       </a>
       <div class="dropdown-menu" role="menu">
         <a class="dropdown-item" role="presentation" routerLink="/users/profile/{{authenticationService.username}}">Profile</a>
-        <a *ngIf="authenticationService.isAdmin" routerLink="/admin" class="dropdown-item" role="presentation">Admin Panel</a>
+        <a *ngIf="authenticationService.isAdmin" [routerLink]="['/admin',{outlets:{'admin-outlet': ['article-add']}}]"
+           class="dropdown-item" role="presentation">Admin Panel</a>
       </div>
 
     </div>
