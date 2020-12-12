@@ -9,4 +9,6 @@ public interface ProductService {
     List<ProductServiceModel>findAllProducts();
 
     void deleteProductById(String id ) throws ProductNotFoundException;
+
+    ProductServiceModel findProductById(String id) throws ProductNotFoundException;
 }

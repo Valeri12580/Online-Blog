@@ -18,6 +18,10 @@ export class ProductService {
     return this.httpClient.get<IProduct[]>(ProductService.PRODUCT_SERVICE_API);
   }
 
+  findProductById(id: string): Observable<IProduct> {
+    return this.httpClient.get<IProduct>(`${ProductService.PRODUCT_SERVICE_API}/${id}`);
+  }
+
   deleteProductById(id: string) {
     this.httpClient.delete(`${ProductService.PRODUCT_SERVICE_API}/delete/${id}`)
       .subscribe(response => {
@@ -28,5 +32,15 @@ export class ProductService {
         , error => {
           console.log('errorrr');
         });
+  }
+
+  deleteProductComment(commentId: string) {
+    const url = this.router.url;
+    this.httpClient.delete(`${Constants.SERVER_API}${url}/comment/delete/${commentId}`)
+      .subscribe(response => {
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([`${url}`]);
+        });
+      });
   }
 }

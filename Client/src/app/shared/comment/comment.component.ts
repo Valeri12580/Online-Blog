@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IComment} from '../IComment';
 import {AuthenticationService} from '../../core/services/authentication.service';
 import {ArticleService} from '../../article/article.service';
+import {Router} from '@angular/router';
+import {ProductService} from '../../product/product.service';
 
 @Component({
   selector: 'app-comment',
@@ -13,7 +15,8 @@ export class CommentComponent implements OnInit {
   @Input()
   public comment: IComment;
 
-  constructor(public authenticationService: AuthenticationService, public articleService: ArticleService) {
+  constructor(public authenticationService: AuthenticationService, public articleService: ArticleService,
+              public productService: ProductService, public router: Router) {
   }
 
   ngOnInit(): void {
@@ -24,7 +27,13 @@ export class CommentComponent implements OnInit {
   }
 
   deleteComment(id: string) {
-    this.articleService.deleteArticleComment(id);
+    const url = this.router.url;
+    if (url.includes('/articles')) {
+      this.articleService.deleteArticleComment(id);
+    } else {
+      this.productService.deleteProductComment(id);
+    }
+
   }
 
 }

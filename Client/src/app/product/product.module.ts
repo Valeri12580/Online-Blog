@@ -6,13 +6,15 @@ import {ProductsListComponent} from './products-list/products-list.component';
 
 import {ProductService} from './product.service';
 import {ProductRoutingModule} from './product-routing.module';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [ProductComponent, ProductDetailsComponent, ProductsListComponent],
   imports: [
     CommonModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    SharedModule
   ]
   , providers: [ProductService]
 })

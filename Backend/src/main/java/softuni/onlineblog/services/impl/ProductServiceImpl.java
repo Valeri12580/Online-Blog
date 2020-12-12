@@ -33,4 +33,10 @@ public class ProductServiceImpl implements ProductService {
 
         productRepository.delete(product);
     }
+
+    @Override
+    public ProductServiceModel findProductById(String id) throws ProductNotFoundException {
+        Product product = this.productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("Product not found"));
+        return this.modelMapper.map(product,ProductServiceModel.class);
+    }
 }
