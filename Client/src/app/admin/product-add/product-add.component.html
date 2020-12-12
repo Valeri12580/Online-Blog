@@ -23,7 +23,7 @@
               <div class="form-group"><input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" class="form-control"
                                              type="text"
                                              name="imageUrl"
-                                             placeholder="Image url"
+                                             placeholder="Image URL"
                                              required
                                              pattern="(^$)|(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)">
 
@@ -34,23 +34,21 @@
               </div>
 
 
-
               <div class="form-group"><input #price="ngModel" [(ngModel)]="product.price" class="form-control"
                                              type="text"
                                              name="price"
-                                             placeholder="Title" required minlength="20" maxlength="75">
-                <small *ngIf="title.errors?.minlength" class="form-text text-danger"> The required min length
-                  is {{title.errors.minlength.requiredLength}} symbols</small>
+                                             placeholder="Price" required>
+                <!--                <small *ngIf="title.errors?.minlength" class="form-text text-danger"> The required min length-->
+                <!--                  is {{title.errors.minlength.requiredLength}} symbols</small>-->
               </div>
 
               <div class="form-group"><input #quantity="ngModel" [(ngModel)]="product.quantity" class="form-control"
-                                             type="text"
+                                             type="number"
                                              name="quantity"
-                                             placeholder="Title" required minlength="20" maxlength="75">
-                <small *ngIf="title.errors?.minlength" class="form-text text-danger"> The required min length
-                  is {{title.errors.minlength.requiredLength}} symbols</small>
+                                             placeholder="Quantity" required>
+                <!--                <small *ngIf="title.errors?.minlength" class="form-text text-danger"> The required min length-->
+                <!--                  is {{title.errors.minlength.requiredLength}} symbols</small>-->
               </div>
-
 
 
               <div class="form-group">

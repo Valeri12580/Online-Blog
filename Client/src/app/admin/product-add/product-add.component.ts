@@ -8,7 +8,8 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./product-add.component.css']
 })
 export class ProductAddComponent implements OnInit {
-  public product: IProductAdd;
+
+  public product: IProductAdd = null;
 
   constructor() {
   }
@@ -17,7 +18,7 @@ export class ProductAddComponent implements OnInit {
   }
 
   publishForm(productForm: NgForm) {
-
+    console.log(productForm);
   }
 
 }
