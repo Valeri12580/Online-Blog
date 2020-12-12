@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Constants} from '../constants';
 import {IProduct} from './IProduct';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import {Observable} from 'rxjs';
 export class ProductService {
   public static PRODUCT_SERVICE_API = `${Constants.SERVER_API}/products`;
 
-  constructor(public httpClient: HttpClient) {
+  constructor(public httpClient: HttpClient, private router: Router) {
   }
 
   findAllProducts(): Observable<IProduct[]> {
@@ -18,6 +19,14 @@ export class ProductService {
   }
 
   deleteProductById(id: string) {
-    
+    this.httpClient.delete(`${ProductService.PRODUCT_SERVICE_API}/delete/${id}`)
+      .subscribe(response => {
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+            this.router.navigate(['/products']);
+          });
+        }
+        , error => {
+          console.log('errorrr');
+        });
   }
 }

@@ -19,12 +19,11 @@ import java.util.Random;
 
 @Component
 @Order(5)
-public class CommentInitialization  implements CommandLineRunner {
+public class CommentInitialization implements CommandLineRunner {
     private CommentRepository commentRepository;
     private ArticleRepository articleRepository;
     private UserRepository userRepository;
     private ProductRepository productRepository;
-
 
 
     @Autowired
@@ -39,28 +38,31 @@ public class CommentInitialization  implements CommandLineRunner {
     public void run(String... args) throws Exception {
         User admin = this.userRepository.findUserByUsername("valeri").get();
         User user = this.userRepository.findUserByUsername("ivan").get();
-        initArticleComments(admin,user);
+        initArticleComments(admin, user);
         initShopComments(user);
     }
-    private void initArticleComments(User admin,User user){
+
+    private void initArticleComments(User admin, User user) {
         Comment comment = new Comment("Wow amazing article!!!", admin, LocalDateTime.now());
         Comment commentTwo = new Comment("The article is very good!Im very exited about your next one...", user,
                 LocalDateTime.now());
 
-        Article article=this.articleRepository.findAll().get(new Random().nextInt(2));
+        Article article = this.articleRepository.findAll().get(new Random().nextInt(2));
 
         comment.setPublishedIn(article);
         commentTwo.setPublishedIn(article);
 
-        commentRepository.saveAll(List.of(comment,commentTwo));
+        commentRepository.saveAll(List.of(comment, commentTwo));
     }
 
-    private void initShopComments(User user){
-        Comment comment=new Comment("This product is amazing!I got 250kg of fat for one week like im using steroids!!",user,LocalDateTime.now());
-
-        Product product = productRepository.findAll().get(0);
+    private void initShopComments(User user) {
+        Comment comment = new Comment("This product is amazing!I got 250kg of fat for one week like im using steroids!!", user, LocalDateTime.now());
+        Comment commentTwo = new Comment("This shirt is so small for my big muscles....", user, LocalDateTime.now());
+        Product product = productRepository.findByTitle("Whey protein").get();
+        Product productTwo = productRepository.findByTitle("T-shirt").get();
         comment.setPublishedIn(product);
+        commentTwo.setPublishedIn(productTwo);
 
-        commentRepository.save(comment);
+        commentRepository.saveAll(List.of(comment, commentTwo));
     }
 }

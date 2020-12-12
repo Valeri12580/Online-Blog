@@ -3,10 +3,9 @@ package softuni.onlineblog.web.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import softuni.onlineblog.domain.models.view.ProductViewModel;
+import softuni.onlineblog.exceptions.ProductNotFoundException;
 import softuni.onlineblog.services.ProductService;
 
 import java.util.List;
@@ -26,5 +25,15 @@ public class ProductController {
     public ResponseEntity<List<ProductViewModel>> findAllProducts() {
         List<ProductViewModel> products = List.of(this.modelMapper.map(this.productService.findAllProducts(), ProductViewModel[].class));
         return ResponseEntity.ok(products);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteProductById(@PathVariable String id) throws ProductNotFoundException {
+
+        productService.deleteProductById(id);
+
+
+        return ResponseEntity.ok().build();
+
     }
 }
