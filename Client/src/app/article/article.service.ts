@@ -5,7 +5,6 @@ import {IArticle} from './IArticle';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {ICommentForm} from '../shared/comment-form/ICommentForm';
-import {IAddArticle} from '../admin/article-add/IAddArticle';
 
 @Injectable()
 export class ArticleService {

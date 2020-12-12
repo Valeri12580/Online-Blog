@@ -20,7 +20,6 @@ public class Product extends BasePublishEntity {
         this.quantity = quantity;
         this.price = price;
     }
-
     private int quantity;
     private BigDecimal price;
 

@@ -15,6 +15,13 @@ import java.util.List;
 @NoArgsConstructor
 
 public class ArticleServiceModel extends BaseServiceModel {
+    public ArticleServiceModel(String title, String description, UserServiceModel author, String imageUrl) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.imageUrl = imageUrl;
+    }
+
     private String id;
     private String title;
     private String description;

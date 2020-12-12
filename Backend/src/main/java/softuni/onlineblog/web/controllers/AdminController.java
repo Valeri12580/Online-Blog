@@ -3,10 +3,15 @@ package softuni.onlineblog.web.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import softuni.onlineblog.domain.models.binding.ArticleBindingModel;
+import softuni.onlineblog.domain.models.service.ArticleServiceModel;
 import softuni.onlineblog.domain.models.view.ArticleViewModel;
+import softuni.onlineblog.exceptions.UserNotFoundException;
 import softuni.onlineblog.services.ArticleService;
-
 
 import java.security.Principal;
 
@@ -24,9 +29,11 @@ public class AdminController {
     }
 
     @PostMapping("/add-article")
-    public ResponseEntity<ArticleViewModel>addArticle(@RequestBody ArticleViewModel articleViewModel, Principal principal){
-        System.out.println();
+    public ResponseEntity<ArticleViewModel> addArticle(@RequestBody ArticleBindingModel articleBindingModel, Principal principal) throws UserNotFoundException {
 
-        return ResponseEntity.ok(new ArticleViewModel());
+        ArticleServiceModel saved = this.articleService.saveArticle(articleBindingModel.getTitle(), articleBindingModel.getDescription(), articleBindingModel.getImageUrl(), principal.getName());
+        ArticleViewModel article = this.modelMapper.map(saved, ArticleViewModel.class);
+
+        return ResponseEntity.ok(article);
     }
 }

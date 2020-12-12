@@ -15,7 +15,7 @@
   color: inherit;
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .article-list h2 {
     margin-bottom: 25px;
     padding-top: 25px;
@@ -72,15 +72,15 @@
   opacity: 1;
 }
 
-.article-separator{
+.article-separator {
   width: 80%;
 }
 
-.username-date-separator{
+.username-date-separator {
   display: inline;
 }
 
-.article-additional-data{
+.article-additional-data {
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -91,3 +91,6 @@
   color: #7d8285;
   margin-bottom: 10px;
 }
+
+
+

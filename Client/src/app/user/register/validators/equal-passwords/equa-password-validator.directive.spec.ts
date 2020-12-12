@@ -1,4 +1,4 @@
-import { EqualPasswordValidatorDirective } from './equal-password-validator.directive';
+import {EqualPasswordValidatorDirective} from './equal-password-validator.directive';
 
 describe('EquaPasswordValidatorDirective', () => {
   it('should create an instance', () => {

@@ -3,7 +3,7 @@ import {ICommentForm} from './ICommentForm';
 import {ArticleService} from '../../article/article.service';
 import {NgForm} from '@angular/forms';
 import {AuthenticationService} from '../../core/services/authentication.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-comment-form',

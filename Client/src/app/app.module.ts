@@ -8,11 +8,11 @@ import {CoreModule} from './core/core.module';
 import {UserModule} from './user/user.module';
 import {AppRoutingModule} from './app-routing.module';
 import {ArticleModule} from './article/article.module';
-import {ShopModule} from './shop/shop.module';
 import {HttpClientModule} from '@angular/common/http';
-import { jwtInterceptorProvider} from './core/interceptors/jwt.interceptor';
-import { NotFoundComponent } from './not-found/not-found.component';
+import {jwtInterceptorProvider} from './core/interceptors/jwt.interceptor';
+import {NotFoundComponent} from './not-found/not-found.component';
 import {AdminModule} from './admin/admin.module';
+import {ProductModule} from './product/product.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import {AdminModule} from './admin/admin.module';
     CoreModule,
     UserModule,
     ArticleModule,
-    ShopModule,
+    ProductModule,
     AdminModule
     , HttpClientModule
     , AppRoutingModule]

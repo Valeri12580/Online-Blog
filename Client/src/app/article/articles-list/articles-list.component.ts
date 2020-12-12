@@ -17,7 +17,7 @@ export class ArticlesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.articleService.findAllArticles().subscribe(e => this.articles = e);
+    this.articleService.findAllArticles().subscribe(e => this.articles = e.sort((a, b) => b.publishedOn.localeCompare(a.publishedOn)));
   }
 
 }

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdminNavigationComponent } from './admin-navigation.component';
+import {AdminNavigationComponent} from './admin-navigation.component';
 
 describe('AdminNavigationComponent', () => {
   let component: AdminNavigationComponent;

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, NgForm} from '@angular/forms';
+import {NgForm} from '@angular/forms';
 import {UserRegisterModel} from './UserRegisterModel';
 import {HttpClient} from '@angular/common/http';
 import {Constants} from '../../constants';

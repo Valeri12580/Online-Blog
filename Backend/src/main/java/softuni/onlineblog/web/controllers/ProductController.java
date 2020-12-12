@@ -25,7 +25,6 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<ProductViewModel>> findAllProducts() {
         List<ProductViewModel> products = List.of(this.modelMapper.map(this.productService.findAllProducts(), ProductViewModel[].class));
-
         return ResponseEntity.ok(products);
     }
 }
