@@ -4,6 +4,7 @@ import {Constants} from '../constants';
 import {IProduct} from './IProduct';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
+import {ICommentForm} from '../shared/comment-form/ICommentForm';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,16 @@ export class ProductService {
 
   findProductById(id: string): Observable<IProduct> {
     return this.httpClient.get<IProduct>(`${ProductService.PRODUCT_SERVICE_API}/${id}`);
+  }
+
+  postProductComment(comment: ICommentForm, productId: string) {
+    const url = this.router.url;
+    this.httpClient.post(`${ProductService.PRODUCT_SERVICE_API}/${productId}/comment`
+      , comment).subscribe(response => {
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([url]);
+      });
+    });
   }
 
   deleteProductById(id: string) {

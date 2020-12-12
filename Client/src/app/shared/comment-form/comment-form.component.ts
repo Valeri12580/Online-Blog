@@ -4,6 +4,7 @@ import {ArticleService} from '../../article/article.service';
 import {NgForm} from '@angular/forms';
 import {AuthenticationService} from '../../core/services/authentication.service';
 import {Router} from '@angular/router';
+import {ProductService} from '../../product/product.service';
 
 @Component({
   selector: 'app-comment-form',
@@ -11,13 +12,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./comment-form.component.css']
 })
 export class CommentFormComponent implements OnInit {
-  //id -article or product
+
   @Input()
   publishedEntityId: string;
 
   public iCommentForm = new ICommentForm();
 
-  constructor(public articleService: ArticleService, public router: Router,public authenticationService:AuthenticationService) {
+  constructor(public articleService: ArticleService, public router: Router, public authenticationService: AuthenticationService,
+              public productService: ProductService) {
   }
 
   ngOnInit(): void {
@@ -31,7 +33,7 @@ export class CommentFormComponent implements OnInit {
     if (url.includes('/articles')) {
       this.articleService.postArticleComment(this.iCommentForm, this.publishedEntityId);
     } else {
-      console.log('product!');
+      this.productService.postProductComment(this.iCommentForm, this.publishedEntityId);
     }
 
 

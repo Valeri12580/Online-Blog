@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {IProductAdd} from './IProductAdd';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-product-add',
@@ -6,10 +8,16 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./product-add.component.css']
 })
 export class ProductAddComponent implements OnInit {
+  public product: IProductAdd;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  publishForm(productForm: NgForm) {
+
   }
 
 }

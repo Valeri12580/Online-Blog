@@ -56,7 +56,7 @@ public class ArticleController {
     @PostMapping("/{id}/comment")
     public ResponseEntity<Void>postArticleComment(@PathVariable String id, @RequestBody CommentBindingModel commentBindingModel, Principal principal) throws ArticleNotFoundException, UserNotFoundException {
 
-        commentService.saveComment(commentBindingModel.getDescription(),id,principal.getName());
+        commentService.saveComment(commentBindingModel.getDescription(),id,principal.getName(),"article");
         return ResponseEntity.ok().build();
     }
     @PostMapping("/{id}/comment/delete/{commentId}")

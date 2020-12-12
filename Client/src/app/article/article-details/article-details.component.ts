@@ -20,6 +20,7 @@ export class ArticleDetailsComponent implements OnInit {
       .subscribe(e => {
         this.article = e;
         this.article.publishedOn = this.formatDate(this.article.publishedOn);
+        this.article.comments = this.article.comments.sort((a, b) => b.publishedOn.localeCompare(a.publishedOn));
       });
 
 

@@ -18,6 +18,7 @@ export class ProductDetailsComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
     this.productService.findProductById(id).subscribe(response => {
       this.product = response;
+      this.product.comments = this.product.comments.sort((a, b) => b.publishedOn.localeCompare(a.publishedOn));
     });
   }
 
