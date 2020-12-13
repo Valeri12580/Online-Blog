@@ -2,7 +2,9 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
-import {UserProfileComponent} from './user-profile/user-profile.component'; // CLI imports router
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {AnonymousGuard} from './anonymous.guard';
+import {AuthenticatedGuard} from './authenticated.guard'; // CLI imports router
 
 const routes: Routes = [
   {
@@ -10,15 +12,19 @@ const routes: Routes = [
     children: [
       {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
+        canActivate: [AnonymousGuard]
+
       },
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [AnonymousGuard]
       },
       {
         path: 'profile/:username'
-        , component: UserProfileComponent
+        , component: UserProfileComponent,
+        canActivate: [AuthenticatedGuard]
       }
     ]
   }

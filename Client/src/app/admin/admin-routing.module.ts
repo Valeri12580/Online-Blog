@@ -4,11 +4,13 @@ import {ArticleAddComponent} from './article-add/article-add.component';
 
 import {AdminHomeComponent} from './admin-home/admin-home.component';
 import {ProductAddComponent} from './product-add/product-add.component';
+import {AdminGuard} from './admin.guard';
 
 export const routes: Routes = [
     {
       path: 'admin',
       component: AdminHomeComponent,
+      canActivate: [AdminGuard],
       children: [
         {
           path: 'article-add',
