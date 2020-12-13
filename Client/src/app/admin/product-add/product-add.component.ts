@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {IProductAdd} from './IProductAdd';
 import {NgForm} from '@angular/forms';
+import {ProductService} from '../../product/product.service';
+import {IProduct} from '../../product/IProduct';
 
 @Component({
   selector: 'app-product-add',
@@ -9,16 +11,16 @@ import {NgForm} from '@angular/forms';
 })
 export class ProductAddComponent implements OnInit {
 
-  public product: IProductAdd = null;
+  public product: IProductAdd = new IProduct();
 
-  constructor() {
+  constructor(public productService: ProductService) {
   }
 
   ngOnInit(): void {
   }
 
-  publishForm(productForm: NgForm) {
-    console.log(productForm);
+  publishForm(productForm: NgForm) :void{
+    this.productService.publishProduct(this.product);
   }
 
 }

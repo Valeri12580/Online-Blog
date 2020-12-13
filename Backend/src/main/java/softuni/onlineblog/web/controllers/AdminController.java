@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import softuni.onlineblog.domain.models.binding.ArticleBindingModel;
+import softuni.onlineblog.domain.models.binding.ProductBindingModel;
 import softuni.onlineblog.domain.models.service.ArticleServiceModel;
+import softuni.onlineblog.domain.models.service.ProductServiceModel;
 import softuni.onlineblog.domain.models.view.ArticleViewModel;
+import softuni.onlineblog.domain.models.view.ProductViewModel;
 import softuni.onlineblog.exceptions.UserNotFoundException;
 import softuni.onlineblog.services.ArticleService;
+import softuni.onlineblog.services.ProductService;
 
 import java.security.Principal;
 
@@ -21,11 +25,13 @@ public class AdminController {
 
     private ArticleService articleService;
     private ModelMapper modelMapper;
+    private ProductService productService;
 
     @Autowired
-    public AdminController(ArticleService articleService, ModelMapper modelMapper) {
+    public AdminController(ArticleService articleService, ModelMapper modelMapper, ProductService productService) {
         this.articleService = articleService;
         this.modelMapper = modelMapper;
+        this.productService = productService;
     }
 
     @PostMapping("/add-article")
@@ -35,5 +41,13 @@ public class AdminController {
         ArticleViewModel article = this.modelMapper.map(saved, ArticleViewModel.class);
 
         return ResponseEntity.ok(article);
+    }
+
+
+    @PostMapping("/add-product")
+    public ResponseEntity<ProductViewModel> addProduct(@RequestBody ProductBindingModel productBindingModel, Principal principal) throws UserNotFoundException {
+        ProductServiceModel productServiceModel = this.productService.addProduct(this.modelMapper.map(productBindingModel, ProductServiceModel.class), principal.getName());
+
+        return ResponseEntity.ok(this.modelMapper.map(productServiceModel, ProductViewModel.class));
     }
 }

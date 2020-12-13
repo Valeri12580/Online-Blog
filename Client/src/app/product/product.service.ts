@@ -5,6 +5,8 @@ import {IProduct} from './IProduct';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {ICommentForm} from '../shared/comment-form/ICommentForm';
+import {AdminService} from '../admin/admin.service';
+import {IProductAdd} from '../admin/product-add/IProductAdd';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ import {ICommentForm} from '../shared/comment-form/ICommentForm';
 export class ProductService {
   public static PRODUCT_SERVICE_API = `${Constants.SERVER_API}/products`;
 
-  constructor(public httpClient: HttpClient, private router: Router) {
+  constructor(public adminService: AdminService, public httpClient: HttpClient, private router: Router) {
   }
 
   findAllProducts(): Observable<IProduct[]> {
@@ -21,6 +23,11 @@ export class ProductService {
 
   findProductById(id: string): Observable<IProduct> {
     return this.httpClient.get<IProduct>(`${ProductService.PRODUCT_SERVICE_API}/${id}`);
+  }
+
+  publishProduct(product: IProductAdd): void {
+
+    this.adminService.postProduct(product);
   }
 
   postProductComment(comment: ICommentForm, productId: string) {

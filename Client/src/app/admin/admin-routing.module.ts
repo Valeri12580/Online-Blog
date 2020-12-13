@@ -16,7 +16,7 @@ export const routes: Routes = [
           outlet: 'admin-outlet'
         }
         , {
-          path: 'product-add',
+          path: 'IAddProduct-add',
           component: ProductAddComponent,
           outlet: 'admin-outlet'
         }

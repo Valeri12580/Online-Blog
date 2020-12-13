@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http';
 import {Constants} from '../constants';
 import {IArticle} from '../article/IArticle';
 import {Router} from '@angular/router';
+import {IProduct} from '../product/IProduct';
+import {IProductAdd} from './product-add/IProductAdd';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ import {Router} from '@angular/router';
 export class AdminService {
   public static ADMIN_SERVICE_API = `${Constants.SERVER_API}/admin`;
   public static ADD_ARTICLE_ENDPOINT = '/add-article';
+  public static ADD_PRODUCT_ENDPOINT = '/add-product';
 
 
   constructor(public httpClient: HttpClient, public router: Router) {
@@ -22,5 +25,13 @@ export class AdminService {
       .subscribe(response => {
         this.router.navigate(['/articles', response.id]);
       });
+  }
+
+  postProduct(product: IProductAdd): void {
+    this.httpClient.post<IProduct>(`${AdminService.ADMIN_SERVICE_API+AdminService.ADD_PRODUCT_ENDPOINT}`, product)
+      .subscribe(response => {
+        this.router.navigate(['/products', response.id]);
+      });
+
   }
 }

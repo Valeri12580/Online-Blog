@@ -12,11 +12,12 @@
           <div class="contact-clean">
             <form #productForm="ngForm" (ngSubmit)="publishForm(productForm)"
                   style="background-color: rgb(252,250,250);">
-              <h2 class="text-center">Add product</h2>
-              <div class="form-group"><input #title="ngModel" [(ngModel)]="product.title" class="form-control"
-                                             type="text"
-                                             name="title"
-                                             placeholder="Title" required minlength="20" maxlength="75">
+              <h2 class="text-center">Add IAddProduct</h2>
+              <div class="form-group">
+                <input #title="ngModel" [(ngModel)]="product.title" class="form-control"
+                       type="text"
+                       name="title"
+                       placeholder="Title" required minlength="20" maxlength="75">
                 <small *ngIf="title.errors?.minlength" class="form-text text-danger"> The required min length
                   is {{title.errors.minlength.requiredLength}} symbols</small>
               </div>
@@ -37,7 +38,7 @@
               <div class="form-group"><input #price="ngModel" [(ngModel)]="product.price" class="form-control"
                                              type="text"
                                              name="price"
-                                             placeholder="Price" required>
+                                             placeholder="Price" required min="0.1">
                 <!--                <small *ngIf="title.errors?.minlength" class="form-text text-danger"> The required min length-->
                 <!--                  is {{title.errors.minlength.requiredLength}} symbols</small>-->
               </div>
@@ -45,7 +46,7 @@
               <div class="form-group"><input #quantity="ngModel" [(ngModel)]="product.quantity" class="form-control"
                                              type="number"
                                              name="quantity"
-                                             placeholder="Quantity" required>
+                                             placeholder="Quantity" min="1" max="1000" required>
                 <!--                <small *ngIf="title.errors?.minlength" class="form-text text-danger"> The required min length-->
                 <!--                  is {{title.errors.minlength.requiredLength}} symbols</small>-->
               </div>

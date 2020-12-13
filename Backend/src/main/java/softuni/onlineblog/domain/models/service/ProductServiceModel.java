@@ -16,7 +16,7 @@ import java.util.List;
 public class ProductServiceModel extends BaseServiceModel  {
     private String title;
     private String description;
-    private User author;
+    private UserServiceModel author;
     private String imageUrl;
     private List<Comment>comments;
     private PublishedIn publishedIn;
