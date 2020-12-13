@@ -9,11 +9,15 @@ export class AuthenticationService {
   public static LOGIN_ENDPOINT = '/users/login';
   public static LOGOUT_ENDPOINT = '/users/logout';
   isAuthenticated = localStorage.getItem('token') !== null;
-  isAdmin = localStorage.getItem('roles').includes('ADMIN');;
-  username = localStorage.getItem('username');
+  isAdmin = null;
+  username = null;
 
 
   constructor(private httpClient: HttpClient) {
+    if (localStorage.getItem('roles') !== null && localStorage.getItem('username') !== null) {
+      this.isAdmin = localStorage.getItem('roles').includes('ADMIN');
+      this.username = localStorage.getItem('username');
+    }
 
   }
 
