@@ -21,7 +21,8 @@ export class UserProfileComponent implements OnInit {
     this.userService.findUserByUsername(username)
       .subscribe(response => {
         this.user = response;
-        this.user.registeredOn=this.formatDate(this.user.registeredOn);
+        this.user.registeredOn = this.formatDate(this.user.registeredOn);
+        this.user.roles = localStorage.getItem('roles');
       });
   }
 
