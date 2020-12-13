@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Constants} from '../../constants';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
+export class AuthenticationService implements OnInit{
   public static LOGIN_ENDPOINT = '/users/login';
   public static LOGOUT_ENDPOINT = '/users/logout';
   isAuthenticated = localStorage.getItem('token') !== null;
@@ -14,11 +14,15 @@ export class AuthenticationService {
 
 
   constructor(private httpClient: HttpClient) {
+
+
+  }
+
+  ngOnInit(): void {
     if (localStorage.getItem('roles') !== null && localStorage.getItem('username') !== null) {
       this.isAdmin = localStorage.getItem('roles').includes('ADMIN');
       this.username = localStorage.getItem('username');
     }
-
   }
 
   login(credentials, callback): void {
@@ -63,4 +67,6 @@ export class AuthenticationService {
 
     callback();
   }
+
+
 }
