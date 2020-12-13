@@ -8,9 +8,9 @@ import {Constants} from '../../constants';
 export class AuthenticationService {
   public static LOGIN_ENDPOINT = '/users/login';
   public static LOGOUT_ENDPOINT = '/users/logout';
-  isAuthenticated = sessionStorage.getItem('token') !== null;
-  isAdmin = null;
-  username = null;
+  isAuthenticated = localStorage.getItem('token') !== null;
+  isAdmin = localStorage.getItem('roles').includes('ADMIN');;
+  username = localStorage.getItem('username');
 
 
   constructor(private httpClient: HttpClient) {
@@ -23,11 +23,11 @@ export class AuthenticationService {
       .subscribe(body => {
           let token = body.jwt;
           console.log(token);
-          sessionStorage.setItem('token', token.toString());
+          localStorage.setItem('token', token.toString());
           this.decodeToken(token);
           this.isAuthenticated = true;
-          this.isAdmin = sessionStorage.getItem('roles').includes('ADMIN');
-          this.username = sessionStorage.getItem('username');
+          this.isAdmin = localStorage.getItem('roles').includes('ADMIN');
+          this.username = localStorage.getItem('username');
           callback();
 
 
@@ -41,8 +41,8 @@ export class AuthenticationService {
 
   decodeToken(token) {
     const decoded: { sub: '', roles: string[], exp: '', iat: '' } = JSON.parse(atob(token.split('.')[1]));
-    sessionStorage.setItem('username', decoded.sub);
-    sessionStorage.setItem('roles', decoded.roles.join(','));
+    localStorage.setItem('username', decoded.sub);
+    localStorage.setItem('roles', decoded.roles.join(','));
 
   }
 
@@ -50,9 +50,9 @@ export class AuthenticationService {
   logout(callback) {
     this.httpClient.post(`${Constants.SERVER_API + AuthenticationService.LOGOUT_ENDPOINT}`, 'logout')
       .subscribe(response => {
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('username');
-        sessionStorage.removeItem('roles');
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        localStorage.removeItem('roles');
         this.isAuthenticated = false;
       });
 
