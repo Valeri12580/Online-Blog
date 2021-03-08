@@ -28,7 +28,7 @@ export class AdminService {
   }
 
   postProduct(product: IProductAdd): void {
-    this.httpClient.post<IProduct>(`${AdminService.ADMIN_SERVICE_API+AdminService.ADD_PRODUCT_ENDPOINT}`, product)
+    this.httpClient.post<IProduct>(`${AdminService.ADMIN_SERVICE_API + AdminService.ADD_PRODUCT_ENDPOINT}`, product)
       .subscribe(response => {
         this.router.navigate(['/products', response.id]);
       });

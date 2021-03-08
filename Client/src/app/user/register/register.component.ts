@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   public static REGISTER_URL = '/users/register';
 
   constructor(public httpClient: HttpClient, private router: Router) {
+
   }
 
   ngOnInit(): void {
