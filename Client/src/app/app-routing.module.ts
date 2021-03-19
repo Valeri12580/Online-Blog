@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {SupportComponent} from './support/support.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,12 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  }
+  ,
+
+  {
+    path: 'support',
+    component: SupportComponent
   }
   , {
     path: 'error',

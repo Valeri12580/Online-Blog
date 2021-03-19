@@ -13,13 +13,15 @@ import {jwtInterceptorProvider} from './core/interceptors/jwt.interceptor';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {AdminModule} from './admin/admin.module';
 import {ProductModule} from './product/product.module';
+import { SupportComponent } from './support/support.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SupportComponent
   ],
   imports: [
     BrowserModule,
