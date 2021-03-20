@@ -32,7 +32,7 @@ export class AuthenticationService implements OnInit {
     })
       .subscribe(body => {
           let token = body;
-          console.log(token);
+        
           localStorage.setItem('token', token.toString());
           this.decodeToken(token);
           this.isAuthenticated = true;
