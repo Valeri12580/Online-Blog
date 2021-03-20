@@ -1,0 +1,16 @@
+<main>
+  <div class="article-list">
+    <div class="container">
+      <div class="intro">
+        <h2 class="text-center">Latest Articles</h2>
+        <p class="text-center">Our latest articles.</p>
+      </div>
+
+      <div class="row articles">
+        <app-article *ngFor="let article of articles" [article]="article" class="col-sm-6 col-md-4 item"></app-article>
+
+
+      </div>
+    </div>
+  </div>
+</main>

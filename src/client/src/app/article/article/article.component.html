@@ -1,0 +1,20 @@
+<div>
+  <a routerLink="{{article.id}}">
+    <img class="img-fluid" style="height: 220px" src="{{article.imageUrl}}"/></a>
+  <h3 class="name">{{article.title}}</h3>
+  <p class="description">
+    {{article.description.substr(0, 30)}}
+  </p>
+  <hr class="article-separator"/>
+  <div class="article-additional-data">
+    <span>{{article.author.username}}</span>
+    <span>{{article.publishedOn}}</span>
+  </div>
+  <a class="action" routerLink="{{article.id}}"
+  ><i class="fa fa-arrow-circle-right"></i
+  ></a>
+  <a *ngIf="authenticationService.isAdmin" class="btn btn-primary rounded-pill w-25 " type="button"
+     style="margin-top: 20px;margin-bottom: 0px;margin-right: 0px;margin-left: 0px;"
+     (click)="deleteArticle(article.id)">Delete
+  </a>
+</div>

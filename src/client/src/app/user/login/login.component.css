@@ -1,0 +1,39 @@
+main{
+  background-image: url("../../../assets/img/running.jpg");
+  background-size: cover;
+
+}
+
+.form-outer .wrapper .form-wrapper{
+  width: 30%;
+  margin: 0 auto;
+  background-color: #F2F3F7;
+  border-radius: 15px;
+  padding: 30px;
+
+}
+
+.form-outer .wrapper .form-wrapper .form-head{
+  padding: 15px;
+
+}
+
+.form-outer .wrapper .form-wrapper .form-head >h1{
+  text-align: center;
+  font-size: 35px;
+
+}
+
+.form-outer .wrapper .form-wrapper .form-footer {
+  margin-top: 15px;
+}
+
+.form-outer .wrapper .form-wrapper .form-footer p  {
+  font-size: 14px;
+  word-spacing: 1px;
+}
+
+.alert-danger{
+  padding: 5px;
+  font-size: 14px;
+}

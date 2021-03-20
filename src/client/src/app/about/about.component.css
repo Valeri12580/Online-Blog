@@ -1,0 +1,70 @@
+section.features .feature-item {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+section.features .feature-item i {
+  font-size: 80px;
+  display: block;
+  margin-bottom: 15px;
+  background: linear-gradient(270deg,#7b4397,#dc2430);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+section.cta {
+  position: relative;
+  padding: 250px 0;
+  background-position: 50%;
+  background-size: cover;
+}
+
+section.cta .cta-content h2 {
+  font-size: 50px;
+  max-width: 450px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+.btn {
+  border-radius: 300px;
+  font-family: Lato,Helvetica,Arial,"sans-serif";
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.btn {
+  color: #fff;
+  border: 1px solid;
+  border-color: #fff;
+  border-radius: 300px;
+  font-family: Lato,Helvetica,Arial,"sans-serif";
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.btn-xl {
+  font-size: 11px;
+  padding: 15px 45px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Catamaran,Helvetica,Arial,"sans-serif";
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+#contact .container >h2{
+  font-size: 50px;
+  text-align: center;
+}
+
+body > app-about > header > div > div{
+  padding: 70px;
+}
+
+.masthead{
+  padding: 60px;
+}

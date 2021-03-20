@@ -1,0 +1,44 @@
+<main>
+
+  <section class="form-outer">
+
+    <div class="wrapper">
+      <div class="form-wrapper">
+        <div class="form-head">
+          <h1>Log in</h1>
+        </div>
+        <div class="form-body">
+          <form #loginForm="ngForm" (submit)="login(loginForm)">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input [(ngModel)]="credentials.username" #username="ngModel" name="username" required type="text" class="form-control" id="username"
+                     placeholder="Enter username">
+
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input [(ngModel)]="credentials.password" #password="ngModel"  name="password" required type="password" class="form-control" id="password"
+                     placeholder="Password">
+            </div>
+
+            <button [disabled]="loginForm.invalid"  type="submit" class="btn btn-primary">
+              Submit
+            </button>
+            <div *ngIf="username.errors?.invalid" class="alert alert-danger text-center mt-2" role="alert">
+              Invalid username or password
+
+            </div>
+          </form>
+        </div>
+
+        <div class="form-footer">
+          <p>Dont have account yet?Click <a routerLink="/users/register">here</a> to join us</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
