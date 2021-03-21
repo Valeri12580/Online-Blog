@@ -38,7 +38,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .httpBasic().and().authorizeRequests().antMatchers("/users/register", "/users/login").anonymous()
                 .antMatchers("/products", "/articles").permitAll()
-                .antMatchers("/users/logout").authenticated().and().addFilter(new AuthenticationFilter(authenticationManager()))
+//                .antMatchers("/admin/*").hasAuthority("ADMIN")
+                .antMatchers("/users/logout").authenticated()
+                .and().addFilter(new AuthenticationFilter(authenticationManager()))
                 .addFilter(new AuthorizationFilter(authenticationManager()))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

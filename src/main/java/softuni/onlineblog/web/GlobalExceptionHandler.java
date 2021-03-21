@@ -2,7 +2,6 @@ package softuni.onlineblog.web;
 
 
 import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.SignatureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -27,8 +26,9 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 
-    @ExceptionHandler(value = {SignatureException.class, ExpiredJwtException.class})
+    @ExceptionHandler(value = {ExpiredJwtException.class})
     public ResponseEntity<String> invalidJwtSignature(Exception ex) {
+
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 }

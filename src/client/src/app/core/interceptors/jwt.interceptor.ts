@@ -1,13 +1,19 @@
 import {Injectable} from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HTTP_INTERCEPTORS, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../services/authentication.service';
 
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
+  url = '';
 
-  constructor() {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
+    this.url = router.url;
   }
+
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
@@ -20,8 +26,15 @@ export class JwtInterceptor implements HttpInterceptor {
         }
       });
     }
+    return next.handle(request).pipe(catchError((error: HttpErrorResponse) => {
 
-    return next.handle(request);
+
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.authenticationService.clearData();
+        this.router.navigate([this.url]);
+      });
+      return throwError(error.status);
+    }));
   }
 }
 

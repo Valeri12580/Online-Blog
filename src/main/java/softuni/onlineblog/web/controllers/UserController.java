@@ -76,9 +76,7 @@ public class UserController {
 
     @PostMapping("/logout")
     public ResponseEntity<Void> logout() {
-        System.out.println("Logged out!");
         SecurityContextHolder.getContext().setAuthentication(null);
-        System.out.println(SecurityContextHolder.getContext().getAuthentication());
         return ResponseEntity.ok().build();
     }
 

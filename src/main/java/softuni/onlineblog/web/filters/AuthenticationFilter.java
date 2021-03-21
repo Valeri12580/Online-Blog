@@ -3,7 +3,6 @@ package softuni.onlineblog.web.filters;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -34,21 +33,21 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 
     public AuthenticationFilter(AuthenticationManager authenticationManager) {
-        this.authenticationManager=authenticationManager;
+        this.authenticationManager = authenticationManager;
         setFilterProcessesUrl("/users/login");
 
     }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-       LoginRequestDto loginRequestDto = null;
+        LoginRequestDto loginRequestDto = null;
         try {
             loginRequestDto = new ObjectMapper().readValue(request.getInputStream(), LoginRequestDto.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequestDto.getUsername(),loginRequestDto.getPassword(), null));
+        return this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequestDto.getUsername(), loginRequestDto.getPassword(), null));
     }
 
     @Override
@@ -57,10 +56,10 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
         Key signingKey = new SecretKeySpec(DatatypeConverter.parseBase64Binary(Constants.JWT_SECRET_KEY), SignatureAlgorithm.HS256.getJcaName());
 
-        String roles=convertRoles(principal.getRoles());
+        String roles = convertRoles(principal.getRoles());
 
-        String jwt= Jwts.builder()
-                .setSubject(principal.getUsername()).claim("roles",roles).setExpiration(new Date(System.currentTimeMillis()+900_000))
+        String jwt = Jwts.builder()
+                .setSubject(principal.getUsername()).claim("roles", roles).setExpiration(new Date(System.currentTimeMillis() + 900_000))
                 .signWith(signingKey).compact();
 
         response.getWriter().write(jwt);
@@ -68,7 +67,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     }
 
-    private String convertRoles(Set<Role> roles){
-       return  roles.stream().map(Role::getRole).collect(Collectors.joining(","));
+    private String convertRoles(Set<Role> roles) {
+        return roles.stream().map(Role::getRole).collect(Collectors.joining(","));
     }
 }
