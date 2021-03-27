@@ -61,7 +61,8 @@ export class AuthenticationService {
   logout(callback) {
     this.httpClient.post(`${Constants.SERVER_API + AuthenticationService.LOGOUT_ENDPOINT}`, '')
       .subscribe(response => {
-       this.clearData()
+        this.clearData();
+        console.log(response);
       });
 
 

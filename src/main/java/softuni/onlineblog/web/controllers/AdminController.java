@@ -37,7 +37,7 @@ public class AdminController {
     //todo doesnt work because security configuration
     @PostMapping("/add-article")
     public ResponseEntity<ArticleViewModel> addArticle(@RequestBody ArticleBindingModel articleBindingModel, Principal principal) throws UserNotFoundException {
-        System.out.println(principal);
+
         ArticleServiceModel saved = this.articleService.saveArticle(articleBindingModel.getTitle(), articleBindingModel.getDescription(), articleBindingModel.getImageUrl(), principal.getName());
         ArticleViewModel article = this.modelMapper.map(saved, ArticleViewModel.class);
 

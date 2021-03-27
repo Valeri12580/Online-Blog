@@ -38,8 +38,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .httpBasic().and().authorizeRequests().antMatchers("/users/register", "/users/login").anonymous()
                 .antMatchers("/products", "/articles").permitAll()
+                .antMatchers("/articles/{id}/comment","/products/{id}/comment").authenticated()
+                .antMatchers("/admin/**","/articles/delete/{id}","/products/delete/{id}","/articles/{id}/comment/delete/{commentId}"
+                        ,"/products/{id}/comment/delete/{commentId}").hasAuthority("ADMIN")
 //                .antMatchers("/admin/*").hasAuthority("ADMIN")
                 .antMatchers("/users/logout").authenticated()
+                .and().logout().logoutUrl("/users/logout")
+                .logoutSuccessUrl("/users/login")
                 .and().addFilter(new AuthenticationFilter(authenticationManager()))
                 .addFilter(new AuthorizationFilter(authenticationManager()))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

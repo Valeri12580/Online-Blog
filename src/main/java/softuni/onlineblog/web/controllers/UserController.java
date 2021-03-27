@@ -74,11 +74,6 @@ public class UserController {
     }
 
 
-    @PostMapping("/logout")
-    public ResponseEntity<Void> logout() {
-        SecurityContextHolder.getContext().setAuthentication(null);
-        return ResponseEntity.ok().build();
-    }
 
     @GetMapping("/profile/{username}")
     public ResponseEntity<UserViewModel> findUserByUsername(@PathVariable String username) throws UserNotFoundException {
