@@ -1,39 +1,40 @@
-<div class="container contact-form" style="margin-top: 0px">
+<header >
+  <div class="container contact-form" >
+    <div class="message-icon">
+      <i class="fas fa-envelope"></i>
+    </div>
 
-  <div style="display: block;text-align: center;margin-bottom: -60spx;">
-    <i class="fas fa-envelope"></i>
-  </div>
+    <form style="margin-top: -45px">
+      <h4 style="margin-bottom: 30px">Drop Us a Message</h4>
+      <div class="row">
+        <div class="col-md-6">
 
-  <form style="margin-top: -45px">
-    <h3>Drop Us a Message</h3>
-    <div class="row">
-      <div class="col-md-6">
+          <div class="form-group">
+            <input  type="email" required name="email" class="border rounded form-control"
+                    placeholder="Your Email *" value=""/>
+            <small class="form-text text-danger"></small>
+          </div>
 
-        <div class="form-group">
-          <input  type="email" required name="email" class="border rounded form-control"
-                 placeholder="Your Email *" value=""/>
-          <small class="form-text text-danger"></small>
+          <div class="form-group">
+            <input  required type="text" name="subject" class="border rounded form-control"
+                    placeholder="Subject *" value=""/>
+            <small class="form-text text-danger"></small>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" name="btnSubmit" class="btn btn-outline-warning btn-xl js-scroll-trigger"/>
+          </div>
         </div>
-
-        <div class="form-group">
-          <input  required type="text" name="subject" class="border rounded form-control"
-                 placeholder="Subject *" value=""/>
-          <small class="form-text text-danger"></small>
-        </div>
-
-        <div class="form-group">
-          <input type="submit" name="btnSubmit" class="rounded-pill btn btn-primary"/>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
+        <div class="col-md-6">
+          <div class="form-group">
           <textarea name="message" required class="form-control border rounded" placeholder="Your Message *"
                     style="width: 100%; height: 150px;"></textarea>
-          <small class="form-text text-danger"></small>
+            <small class="form-text text-danger"></small>
+          </div>
         </div>
+
+
       </div>
-
-
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+</header>

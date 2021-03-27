@@ -8,7 +8,7 @@ section.features .feature-item i {
   font-size: 80px;
   display: block;
   margin-bottom: 15px;
-  background: linear-gradient(270deg,#7b4397,#dc2430);
+  background: linear-gradient(270deg, #7b4397, #dc2430);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -29,16 +29,8 @@ section.cta .cta-content h2 {
 }
 
 .btn {
-  border-radius: 300px;
-  font-family: Lato,Helvetica,Arial,"sans-serif";
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.btn {
   color: #fff;
-  border: 1px solid;
-  border-color: #fff;
+  border: 1px solid #fff;
   border-radius: 300px;
   font-family: Lato,Helvetica,Arial,"sans-serif";
   letter-spacing: 2px;
