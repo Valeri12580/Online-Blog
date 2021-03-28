@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css', './forms-validations.css']
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
   public userModel = new UserRegisterModel();

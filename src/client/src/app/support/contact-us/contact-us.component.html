@@ -1,0 +1,60 @@
+<header>
+  <div class="container contact-form">
+    <div class="message-icon">
+      <i class="fas fa-envelope"></i>
+    </div>
+
+    <form style="margin-top: -45px" (ngSubmit)="submit()" #ticketForm="ngForm">
+      <h4 style="margin-bottom: 30px">Drop Us a Message</h4>
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="form-group">
+            <input [(ngModel)]="ticket.email" #email="ngModel" type="email" required name="email"
+                   class="rounded form-control" email
+                   placeholder="Your Email *" value=""/>
+            <small class="form-text text-danger"></small>
+          </div>
+
+
+          <div class="form-group">
+            <input [(ngModel)]="ticket.subject"  #subject="ngModel" required minlength="10" maxlength="70"  type="text" name="subject" class=" form-control"
+                   placeholder="Subject *" value=""/>
+
+          </div>
+
+          <div class="form-group">
+            <input type="submit" name="btnSubmit" class="btn btn-outline-warning btn-xl js-scroll-trigger"/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+          <textarea [(ngModel)]="ticket.message" #message="ngModel" name="message" required minlength="70" class="form-control border rounded"
+                    placeholder="Your Message *"
+                    style="width: 100%; height: 150px;"></textarea>
+            <small class="form-text text-danger"></small>
+          </div>
+
+          <div class="error" *ngIf="email.errors?.required || subject.errors?.required || message.errors?.required ">
+            {{"Полетата не могат да бъдат празни!"}}
+          </div>
+
+          <div class="error" *ngIf="email.errors?.email">
+            The email is invalid
+          </div>
+
+          <div class="error" *ngIf="subject.errors?.minlength">
+            The required minimum length for the subject field is {{subject.errors?.minlength.requiredLength}}
+          </div>
+
+          <div class="error" *ngIf="message.errors?.minlength">
+            The required minimum length for the subject field is {{message.errors?.minlength.requiredLength}}
+          </div>
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+</header>
+
