@@ -14,6 +14,7 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {AdminModule} from './admin/admin.module';
 import {ProductModule} from './product/product.module';
 import {SupportModule} from './support/support.module';
+import {errorHandlerProvider} from './core/interceptors/error-handler.interceptor';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import {SupportModule} from './support/support.module';
     , HttpClientModule
     , AppRoutingModule]
   ,
-  providers: [jwtInterceptorProvider],
+  providers: [jwtInterceptorProvider, errorHandlerProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule {

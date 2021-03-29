@@ -28,11 +28,13 @@ export class JwtInterceptor implements HttpInterceptor {
     }
     return next.handle(request).pipe(catchError((error: HttpErrorResponse) => {
 
-
-      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-        this.authenticationService.clearData();
-        this.router.navigate([this.url]);
-      });
+      if (error.status === 401) {
+        console.log('Auth error');
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.authenticationService.clearData();
+          this.router.navigate([this.url]);
+        });
+      }
       return throwError(error.status);
     }));
   }
