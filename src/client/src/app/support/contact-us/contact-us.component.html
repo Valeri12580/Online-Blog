@@ -29,14 +29,14 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-          <textarea [(ngModel)]="ticket.message" #message="ngModel" name="message" required minlength="70" class="form-control border rounded"
+          <textarea [(ngModel)]="ticket.message" #message="ngModel" name="message" required minlength="70" maxlength="1000" class="form-control border rounded"
                     placeholder="Your Message *"
                     style="width: 100%; height: 150px;"></textarea>
             <small class="form-text text-danger"></small>
           </div>
 
           <div class="error" *ngIf="email.errors?.required || subject.errors?.required || message.errors?.required ">
-            {{"Полетата не могат да бъдат празни!"}}
+            {{"The fields can't be empty"}}
           </div>
 
           <div class="error" *ngIf="email.errors?.email">

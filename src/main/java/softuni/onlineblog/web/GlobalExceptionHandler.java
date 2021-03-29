@@ -21,7 +21,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(value = {BadCredentialsException.class})
-    @ResponseBody
+
     public ResponseEntity<String> badCredentialsExceptionHandler(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
     }
