@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(value = InvalidDataException.class)
-    public ResponseEntity<String>invalidDataExceptionHandler(Exception ex){
-        return new ResponseEntity<String>(ex.getMessage(),HttpStatus.BAD_REQUEST);
+    public ResponseEntity<String> invalidDataExceptionHandler(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }
