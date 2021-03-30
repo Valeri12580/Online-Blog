@@ -8,6 +8,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import softuni.onlineblog.exceptions.ArticleNotFoundException;
+import softuni.onlineblog.exceptions.InvalidDataException;
 import softuni.onlineblog.exceptions.UserNotFoundException;
 
 @ControllerAdvice
@@ -29,5 +30,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> invalidJwtSignature(Exception ex) {
 
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(value = InvalidDataException.class)
+    public ResponseEntity<String>invalidDataExceptionHandler(Exception ex){
+        return new ResponseEntity<String>(ex.getMessage(),HttpStatus.BAD_REQUEST);
     }
 }
