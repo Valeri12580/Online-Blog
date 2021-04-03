@@ -6,24 +6,29 @@ import {TicketInfoComponent} from './ticket-info/ticket-info.component';
 
 const routes: Routes = [
   {
-    path: 'contact-us',
-    component: ContactUsComponent,
-    pathMatch: 'full'
-  },
-  {
-    path: 'tickets',
+    path: 'support',
     children: [
       {
-        path: '',
-        component: TicketPanelComponent
-      }
-      ,
+        path: 'contact-us',
+        component: ContactUsComponent,
+      },
       {
-        path: ':id',
-        component: TicketInfoComponent
+        path: 'tickets',
+        children: [
+          {
+            path: '',
+            component: TicketPanelComponent
+          }
+          ,
+          {
+            path: ':id',
+            component: TicketInfoComponent
+          }
+        ]
       }
     ]
   }
+
 ]; // sets up routes constant where you define your routes
 
 // configures NgModule imports and exports

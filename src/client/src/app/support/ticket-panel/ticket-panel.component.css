@@ -1,0 +1,38 @@
+main {
+  margin-top: 50px;
+}
+
+nav {
+  margin: 50px 0;
+}
+
+
+.pagination.pages {
+  justify-content: center;
+
+}
+
+.support-table {
+  background-color: #34495E;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.support-table .row.header {
+  color: #DBDD55;
+  font-weight: bold;
+  margin-top: 5px;
+  font-size: 18px;
+  padding: 15px 0;
+
+}
+
+.support-table .row.data {
+  color: white;
+
+
+}
+
+.fas {
+  margin: 0 10px;
+}

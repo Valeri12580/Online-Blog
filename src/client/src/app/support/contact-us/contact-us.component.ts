@@ -20,7 +20,7 @@ export class ContactUsComponent implements OnInit {
 
   submit(): void {
     this.httpClient.post(Constants.SERVER_API + '/support/contact-us', this.ticket).subscribe(e => {
-      alert('success');
+
     });
   }
 
