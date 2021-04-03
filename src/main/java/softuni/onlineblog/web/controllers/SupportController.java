@@ -3,13 +3,11 @@ package softuni.onlineblog.web.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import softuni.onlineblog.domain.entities.Ticket;
 import softuni.onlineblog.domain.models.binding.TicketBindingModel;
 import softuni.onlineblog.domain.models.view.TicketsPageModel;
 import softuni.onlineblog.exceptions.InvalidDataException;
@@ -56,9 +54,8 @@ public class SupportController {
     }
 
     @GetMapping("/tickets")
-    public ResponseEntity<TicketsPageModel>getTickets(@RequestParam int page){
+    public ResponseEntity<TicketsPageModel> getTickets(@RequestParam int page) {
         TicketsPageModel ticketPageModel = this.supportService.getTickets(page);
-
 
         return ResponseEntity.ok(ticketPageModel);
     }
